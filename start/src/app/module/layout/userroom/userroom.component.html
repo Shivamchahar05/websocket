@@ -1,0 +1,20 @@
+<div class="main">
+    <h1>
+        !!Hii WELCOME TO CREATE 
+        <h1>GROUP</h1>
+    </h1>
+    <form [formGroup]="chatRoomForm" (ngSubmit)="onSubmitroom()">
+        <mat-form-field class="roomName" appearance="outline">
+            <mat-label>Room Name</mat-label>
+            <input matInput placeholder=" Room Name" formControlName="roomName" required />
+            <mat-error *ngIf="chatRoomForm.controls?.['roomName']?.errors?.['required']">
+                Room Name is Required!!
+            </mat-error>
+            <mat-error *ngIf="chatRoomForm.controls?.['roomName']?.errors?.['pattern']">
+                Space are not allowed!!
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-button type="submit">Submit</button>
+    </form>
+</div>

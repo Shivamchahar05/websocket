@@ -1,0 +1,107 @@
+.main {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+
+    img {
+        height: 600px;
+        width: 500px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .data {
+        padding: 50px;
+        height: 450px;
+        width: 400px;
+        h1 {
+            font-weight: 600;
+        }
+        form {
+            ::ng-deep {
+                .mat-form-field-outline {
+                    background-color: white;
+                    border-radius: 5px;
+                }
+            }
+            .name {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                column-gap: 5px;
+            }
+            @media only screen and (max-width: 600px) {
+                .name {
+                  display: grid;
+                  grid-template-columns: 20%;
+                  ::ng-deep {
+                    .mat-form-field-outline {
+                        background-color: white;
+                        border-radius: 5px;
+                        width: 400px;
+                    }
+                }
+                }
+              }
+            .contact {
+                display: grid;
+                grid-template-columns: 25% 73%;
+                column-gap: 5px;
+            }
+            @media only screen and (max-width: 600px) {
+                .contact {
+                  display: grid;
+                  grid-template-columns: 25%;
+                  ::ng-deep {
+                    .mat-form-field-outline {
+                        background-color: white;
+                        border-radius: 5px;
+                        width: 400px;
+                    }
+                }
+                }
+              }
+            .email {
+                display: flex;
+                flex-direction: column;
+                width: 98.5%;
+            }
+            .pass {
+                width: 98%;
+                display: flex;
+                flex-direction: column;
+            }
+            .nav {
+                display: flex;
+                justify-content: space-between;
+                // align-items: flex-end;
+                h3{
+                    margin-top: 20px;
+                }
+                button {
+                    width: 30%;
+                    height: 50px;
+                    background-color: blue;
+                    // background-image: linear-gradient(to right, #193171, #409f8a);
+                    margin-top: 10px;
+                    margin-right: 10px;
+                    margin-bottom: 5px;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+     .main{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+::ng-deep {
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+        stroke: white;
+    }
+}

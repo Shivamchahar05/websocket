@@ -1,0 +1,95 @@
+<div class="header">
+    <div class="headerimg">
+        <img style="height: 80px;width: 150px; border-radius: 300px;" src="/assets/chat-app-logo-icon-vector.webp">
+        <h1>Chat Application - Angular client </h1>
+    </div>
+    <div class="btn">
+        <button (click)="logout()">Logout</button>
+    </div>
+</div>
+<div class="main">
+    <div class="leftnav">
+        <div class="listhead">
+            <div *ngFor="let data of useryour" class="yourself">
+                <span><i class="fa-sharp fa-solid fa-circle-user"></i></span>{{data.name}}
+            </div>
+            <div class="btn" (click)="openDialog()">
+                <button>Create Group</button>
+            </div>
+        </div>
+        <div>
+            <mat-selection-list [multiple]="false">
+                <mat-list-option class="groupchat" *ngFor="let contact of contactList" [value]="contact"
+                    (click)="onSelect(contact)">
+                    <div class="listIcon">
+                        <mat-icon class="icon">supervised_user_circle</mat-icon>
+                        <h1>{{contact?.roomName}}</h1>
+                    </div>
+                </mat-list-option>
+
+                <mat-list-option *ngFor="let data of userDetails" class="userlist" (click)="onSelectName(data)">
+                    <ul>
+                        <li><span><i class="fa-sharp fa-solid fa-circle-user"
+                                    style="margin-right:10px ;"></i>{{data.name}}</span><span><i
+                                    class="fa-sharp fa-solid fa-circle"></i></span></li>
+                    </ul>
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <div id="chat-applicaton">
+        <div class="groupname">
+            <div>
+                <h1><span><i class="fa-solid fa-people-group"></i></span>{{clickname}}</h1>
+                <div id="feedback">
+                    <p>{{feedback}}</p>
+                </div>
+            </div>
+            <div>
+                <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+                <mat-menu #menu="matMenu">
+                    <div *ngFor="let item of presentgroup let index = index">
+                        <p *ngFor="let i of item">{{i.roomName}}</p>
+                    </div>
+                    
+                </mat-menu>
+
+                
+            </div>
+            <div *ngIf="leavegroup" class="leave">
+                <button>Leave</button>
+            </div>
+        </div>
+        <div id="chat-window">
+            <div id="output" *ngFor="let item of messageArray" [ngClass]="userChecker(item) ? 'a' : 'b'">
+                <div class="message" *ngIf="item.message.length>20">
+                    <strong>{{item.userName}} :</strong>
+                    <app-read-more [content]="item.message" [limit]="300" [completeWords]="true">
+                    </app-read-more>
+                </div>
+                <div class="message" *ngIf="item.message.length<=20">
+                    <strong>{{item.userName}} :</strong>
+                    {{item.message}}
+                </div>
+                <p><i class="fa-regular fa-clock"></i>{{item.time}}</p>
+            </div>
+            <!-- <p *ngIf="disconnetedcondition" class="mess">{{mess}}</p> -->
+            <!-- <div id="feedback">
+                <p>{{feedback}}</p>
+            </div> -->
+        </div>
+        <form [formGroup]="messageForm">
+            <div class="footer">
+                <div>
+                    <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
+                        (keypress)="messageTyping()" formControlName="message" />
+                </div>
+                <div class="btn3">
+                    <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">
+                        <mat-icon>send</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

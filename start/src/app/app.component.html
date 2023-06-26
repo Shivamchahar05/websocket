@@ -1,0 +1,20 @@
+<!-- <div id="chat-applicaton">
+  <h2>Chat Application - Angular client Group</h2>
+  <button (click)="discon()">leave</button>
+  <div id="chat-window">
+    <div id="output" *ngFor="let data of output"  [ngStyle]="{'float':(messagestyle == true) ? 'right' : 'left' }">
+        <p ><strong>{{data.handle}} : </strong>{{data.message}}</p>
+    </div><br>
+    <p *ngIf="disconnetedcondition" class="mess">{{mess}}</p>
+    <div id="feedback"><p>{{feedback}}</p></div>
+  </div>
+  <input id="handle" type="text" [(ngModel)]="userName" placeholder="Name" (keypress)="usernameTyping()"/>
+  <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
+    (keypress)="messageTyping()" />
+  <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+</div>
+ [ngStyle]="messagestyle?{'float:right'}:{'float:left'}" 
+ [ngStyle]="{'float':(messagestyle == true) ? 'right' : 'left' }" -->
+<router-outlet></router-outlet>
+
+
